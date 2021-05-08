@@ -72,7 +72,10 @@
     <span>2021-05-06</span>
     <h2>Hello World</h2>
     
-    </div>
+    <div class="social-links">
+    <a href="mailto:634226718@qq.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+    <a href="https://weibo.com/p/1005052820695951/home" target="_blank"><i class="fa fa-weibo fa-fw"></i></a>
+</div></div>
 </div>
 </div>
 
@@ -80,10 +83,7 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <div class="aplayer" data-name='In My Life' data-artist='披头士' data-url='https://music.migu.cn/v3/music/song/6005669Z0RF' data-autoplay='true' ></div>
-
-
-<p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -213,7 +213,56 @@
 }());
 </script>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/valine/1.4.14/Valine.min.js"></script>
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'TVAa6qtKM9wCyVHLgguS7Bzc-gzGzoHsz',
+    appKey: 'xYPrqdIzL136vWNuNdc21jJV',
+    placeholder: 'Say something.',
+    avatar: 'identicon',
+    meta: guest,
+    pageSize: '10' || 10,
+    lang: 'en' || 'zh-cn'
+  });
+</script>
 
-
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+  TeX: {
+          extensions: ["mhchem.js"]
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
 </body>
 </html>
