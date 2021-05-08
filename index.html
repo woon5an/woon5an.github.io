@@ -4,9 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>Woonsan</title>
+  <title>woonSan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Woonsan">
+  <meta name="author" content="woon">
   <meta name="keywords" content="">
   <meta name="description" content="我切图佬又何尝不想成为一个伟大的舞蹈家呢">
   <script id="hexo-configurations">
@@ -15,13 +15,13 @@
     theme: 'lx',
     version: '0.3.9',
     localsearch:{
-      "enable": false,
+      "enable": true,
       "trigger": "auto",
       "top_n_per_article": 1,
       "unescape": false,
       "preload": false
       },
-    path: 'null'
+    path: 'search.xml'
   };
 </script>
 
@@ -63,13 +63,30 @@
 <meta name="generator" content="Hexo 5.4.0"></head>
 <body>
 <div id="page">
+<a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
 
 <div id="lx-aside" style="background-image: url(/images/avatar.jpg)">
   <div class="overlay">
   <div class="featured">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpg"></a></div>
-    <span>Woonsan</span>
-    <h1>Woonsan</h1>
+    <span>woon</span>
+    <h1>woonSan</h1>
     <span>——我切图佬又何尝不想成为一个伟大的舞蹈家呢</span>
     <div class="social-links">
     <a href="mailto:634226718@qq.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -109,7 +126,7 @@
 
 <footer>
   <div>
-  Copyright &copy; 2021.<a href="/">Woonsan</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  Copyright &copy; 2021.<a href="/">woonSan</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
   </div>
 </footer>
 
@@ -128,11 +145,11 @@
       <div class="col">
         <div class="row for-pic">
           <div class="profile-pic">
-            <a href="/"><img src="/images/avatar.jpg" alt="Woonsan"/></a>
+            <a href="/"><img src="/images/avatar.jpg" alt="woon"/></a>
           </div>
         </div>
         <div class="row for-name">
-          <p>Woonsan</p>
+          <p>woon</p>
           <span class="tagline">Hello, World!</span>
         </div>
       </div>
@@ -189,7 +206,7 @@
 	});
 }());
 </script>
-
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/local.search.js"></script>
 
 
 </body>
