@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>elementUI 图标乱码踩坑 | woonSan</title>
+  <title>asyncAwait实现 | woonSan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="woon">
   <meta name="keywords" content="">
@@ -86,8 +86,8 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpg"></a></div>
-    <span>2021-05-09</span>
-    <h2>elementUI 图标...</h2>
+    <span>2021-07-06</span>
+    <h2>asyncAwait实现</h2>
     
     <div class="social-links">
     <a href="mailto:634226718@qq.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -100,7 +100,8 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getData = <span class="function">() =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> resolve(<span class="string">&#x27;data&#x27;</span>), <span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">asyncToGenerator</span> (<span class="params">genF</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> gen = genF</span><br><span class="line">      <span class="keyword">const</span> step = <span class="function"><span class="params">nextF</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> &#123; value, done &#125; = nextF()</span><br><span class="line">        <span class="keyword">if</span> (done) resolve(value)</span><br><span class="line">        <span class="built_in">Promise</span>.resolve(value).then(<span class="function"><span class="params">res</span> =&gt;</span> step(<span class="function">() =&gt;</span> gen.next(res)),</span><br><span class="line">          <span class="function"><span class="params">err</span> =&gt;</span> step(<span class="function">() =&gt;</span> gen.throw(err))</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">      step(<span class="function">() =&gt;</span> gen.next())</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> test = asyncToGenerator(<span class="function"><span class="keyword">function</span>* (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">yield</span>, <span class="string">&#x27;start&#x27;</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;data:&#x27;</span>, <span class="keyword">yield</span> getData())</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;data2:&#x27;</span>, <span class="keyword">yield</span> getData())</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;end&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">test().then(<span class="function"><span class="params">res</span> =&gt;</span> <span class="built_in">console</span>.log(res))</span><br></pre></td></tr></table></figure>
+
       </div>
     </div>
   </div>
@@ -108,12 +109,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer-l.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/06/03/symbol%E5%AE%9E%E7%8E%B0/">
+		<a class="copy" href="/2021/07/16/%E5%88%86%E4%BA%AB%E4%BC%9A%E8%AE%B0%E5%BD%95/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>symbol实现</h3>
+						<h3>科室分享会</h3>
 					</div>
 				</div>
 			</div>
@@ -121,12 +122,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer-r.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/05/06/hello-world/">
+		<a class="copy" href="/2021/06/03/symbol%E5%AE%9E%E7%8E%B0/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>Hello W...</h3>
+						<h3>symbol实现</h3>
 					</div>
 				</div>
 			</div>

@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>elementUI 图标乱码踩坑 | woonSan</title>
+  <title>symbol实现 | woonSan</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="woon">
   <meta name="keywords" content="">
@@ -86,8 +86,8 @@
   <div class="overlay">
   <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpg"></a></div>
-    <span>2021-05-09</span>
-    <h2>elementUI 图标...</h2>
+    <span>2021-06-03</span>
+    <h2>symbol实现</h2>
     
     <div class="social-links">
     <a href="mailto:634226718@qq.com" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
@@ -100,7 +100,8 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> generateName = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> id = <span class="number">0</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">desc</span>) </span>&#123;</span><br><span class="line">    id++</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;@@&#x27;</span> + desc + id</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">symbol</span> (<span class="params">description</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">this</span> <span class="keyword">instanceof</span> symbol) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;Symbol can not be new &#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> desc = description == <span class="literal">undefined</span> ? <span class="literal">undefined</span> : <span class="built_in">String</span>(description)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> sbl = <span class="built_in">Object</span>.create(&#123;</span><br><span class="line">    <span class="attr">toString</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>._name_</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">valueOf</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">Object</span>.defineProperties(sbl, &#123;</span><br><span class="line">    <span class="string">&#x27;_Description_&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">value</span>: desc,</span><br><span class="line">      <span class="attr">configurable</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">enumerable</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;_name_&#x27;</span>: &#123;</span><br><span class="line">      <span class="attr">value</span>: generateName(desc),</span><br><span class="line">      <span class="attr">configurable</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">writable</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">enumerable</span>: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> sbl</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> woonsan = symbol(<span class="string">&#x27;woonsan&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> woon = symbol(<span class="string">&#x27;woon&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(woonsan.valueOf())</span><br><span class="line"><span class="built_in">console</span>.log(woon.toString())</span><br></pre></td></tr></table></figure>
+
       </div>
     </div>
   </div>
@@ -108,12 +109,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover prev lx-cover-sm" style="background-image: url(/images/footer-l.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/06/03/symbol%E5%AE%9E%E7%8E%B0/">
+		<a class="copy" href="/2021/07/06/asyncAwait%E5%AE%9E%E7%8E%B0/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>symbol实现</h3>
+						<h3>asyncAw...</h3>
 					</div>
 				</div>
 			</div>
@@ -121,12 +122,12 @@
 	</div>
         <div class="lx-cover next lx-cover-sm" style="background-image: url(/images/footer-r.jpg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2021/05/06/hello-world/">
+		<a class="copy" href="/2021/05/09/elementUI-%E5%9B%BE%E6%A0%87%E4%B9%B1%E7%A0%81%E8%B8%A9%E5%9D%91/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>Hello W...</h3>
+						<h3>element...</h3>
 					</div>
 				</div>
 			</div>
